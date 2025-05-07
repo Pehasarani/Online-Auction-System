@@ -1,0 +1,45 @@
+post1,post2,post3,post4{
+    border: 1px solid #467be6; 
+    padding: 20px; 
+    max-width: 250px; 
+    margin: 0 auto; 
+    margin-top: 20px;
+    background-color: #98b2e6;
+    
+}
+
+
+.main {
+    background:url('../images/background.jpeg') ;
+    background-size: cover;
+}
+
+.box{
+    box-sizing: border-box;
+    border: 3px solid #041d56;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding: 10px;
+    height: 450px;
+    overflow: auto;
+    border-radius: 5px;
+}
+.box1{
+    
+    height: 500px;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-track{
+    background: #ade1fb;
+}
+
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(#0f2573,#01082d);
+    border-radius: 20px;
+    height: 5px;
+}

@@ -1,0 +1,27 @@
+/*body {
+    background: url("../images/background14.jpeg")  ;
+    background-size: 100%;
+}*/
+body {
+    margin: 0;
+    background-size: 100%;
+}
+.hero {
+    background: url("../images/background14.jpeg")  ;
+    background-size: cover;
+    text-align: left;
+    margin: 0px ;
+    padding:20px;
+    font-family: 'Times New Roman', Times, serif;  
+}
+
+nav a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #041d56;
+}
+
+nav a:hover{
+    cursor: pointer;
+    color: #266ca9;
+}

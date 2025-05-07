@@ -1,0 +1,152 @@
+* {
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+
+
+.hero {
+    width: 100%;
+    min-height: 100vh;
+    background: url('../images/background.jpeg');
+    background-position: center;
+    background-size: cover;
+    padding: 10px 10%;
+    overflow: hidden;
+    position: relative;
+}
+
+.content {
+    margin-top: 10%;
+    max-width: 600px;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 15px 80px;
+    color: #fff;
+    background-image: linear-gradient(#266ca9,#041d56);
+    font-size: 16px;
+    border-radius: 30px;
+    border-top-right-radius: 0px; 
+    transition: 0.5s;
+}
+
+.content h1 {
+    font-size: 70px;
+    color: #222;
+}
+
+.content h4 {
+    margin: 10px 0px 30px;
+    font-size: 30px;
+    color: #333;
+}
+
+.btn:hover {
+    border-top-right-radius: 30px;
+}
+
+.main {
+    display: flex;
+    margin-top: 40px;
+}
+.feature-img {
+    width: 530px;
+    height: 400px;
+    position: relative;
+    margin-top: 50px;
+    margin-left: 200px;
+    bottom: 10%;
+    right: 0%;
+    border-radius: 20px;
+}
+
+.category .list{
+    display: flex;
+    width: 100%;
+}
+.category .list li {
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin: 10px 15px;
+}
+
+.category .list li img {
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.category h2 {
+    margin: 10px 0px 30px;
+    font-size: 30px;
+    color: #333;
+    font-family: 'palatino';
+}
+
+.review h2 {
+    margin: 10px 0px 30px;
+    font-size: 30px;
+    color: #333;
+    font-family: 'palatino';
+}
+
+.list li img:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.association .bx {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: #000;
+    background: #fff;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+fieldset{
+    margin: 20px 0px;
+    width: 30%;
+    padding: 20px;
+    border-width: 10px;
+    border-color:#041d56;
+}
+fieldset legend {
+    font-family: 'palatino';
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.review .list{
+    display: flex;
+    width: 100%;
+    margin-left: 170px;
+    
+}
+.review .list li {
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin: 10px 30px;
+}
+
+.review .list li img {
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 30px;
+}
+.review li img {
+    width: 280px;
+    height: 400px;
+}
+
+
