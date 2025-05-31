@@ -47,30 +47,38 @@ $result = mysqli_fetch_assoc($bid_sql);
                     <p>Crafted from premium denim fabric, each piece is designed to flatter your silhouette and provide all-day comfort. Whether you're dressing up for a night out or keeping it casual for a weekend brunch, our denim seamlessly transitions from day to night with ease.</p>
                     <ul>
                         <?php 
-                        echo "<li>Item Id : " .$result['Item_Id']. "</li>
-                        <li>Auction Id : " .$result['Auction_Id']. "</li>
-                        <li>Current Bid: " .$result['Bid_Amount']. "$</li>
-                        <li>Closes at: " .$result['Closing_time']. "</li>"
-                        
+                        if ($result && isset($result['Item_Id'], $result['Auction_Id'], $result['Bid_Amount'], $result['Closing_time'])) {
+                            echo "<li>Item Id : " . htmlspecialchars($result['Item_Id']) . "</li>
+                            <li>Auction Id : " . htmlspecialchars($result['Auction_Id']) . "</li>
+                            <li>Current Bid: " . htmlspecialchars($result['Bid_Amount']) . "$</li>
+                            <li>Closes at: " . htmlspecialchars($result['Closing_time']) . "</li>";
+                            $current_bid = $result['Bid_Amount'];
+                        } else {
+                            echo "<li>Item Id : 7</li>
+                            <li>Auction Id : N/A</li>
+                            <li>Current Bid: No bids yet</li>
+                            <li>Closes at: N/A</li>";
+                            $current_bid = 0;
+                        }
                         ?>
                         <form action= "php/bid2.php" method = "post" onsubmit="return CheckBid()">
                             <label for ="placebid">Enter Your Bid : </label>
                             <input  type = "number" id ="placebid" name="new_bid" step = "0.01">
                             <script>
-                    function CheckBid()
-                    {
-                        var current_bid = <?php echo $result['Bid_Amount']; ?>;
-                        var new_bid = document.getElementById ("placebid").value;
+function CheckBid()
+{
+    var current_bid = <?php echo json_encode($current_bid); ?>;
+    var new_bid = document.getElementById ("placebid").value;
 
-                        if (current_bid >= new_bid) 
-                        {
-                            alert("Enter a higher bid");
-                            return false;
-                        }
-                        return true;
-                    }
-                    </script>
-                        <button type ="submit" class = "wishlistbtn">Place Bid</button>
+    if (parseFloat(new_bid) <= parseFloat(current_bid)) 
+    {
+        alert("Enter a higher bid");
+        return false;
+    }
+    return true;
+}
+</script>
+                            <button type ="submit" class = "wishlistbtn">Place Bid</button>
                         </form>
                     </ul>
                     <form action="#" method="post">

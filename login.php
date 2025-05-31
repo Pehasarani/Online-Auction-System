@@ -95,7 +95,6 @@
                     <input type="password" placeholder="Password" name="user_password" required/>
                     
                 </div>
-                <a href="#" class="forgot">Forgot your password?</a>
                 <button type="submit" name="login" value = "login">Sign In</button>
             </form>
         </div>

@@ -3,7 +3,6 @@ require 'php/config.php';
 
 $bid_sql = mysqli_query($con,"SELECT * FROM bid WHERE Bid_Amount = (SELECT MAX(Bid_Amount) FROM bid WHERE Item_Id = 5) AND Item_Id = 5");
 
-
 $result = mysqli_fetch_assoc($bid_sql);
 ?>
 
@@ -50,30 +49,38 @@ $result = mysqli_fetch_assoc($bid_sql);
                     <p>Adorn your ears with the shimmering allure of our exquisite gold earrings. Crafted with precision and passion, each pair is a celebration of sophistication and style. Whether you're dressing up for a special occasion or adding a touch of glamour to your everyday look, our gold earrings are the perfect choice.</p>
                     <ul>
                         <?php 
-                        echo "<li>Item Id : " .$result['Item_Id']. "</li>
-                        <li>Auction Id : " .$result['Auction_Id']. "</li>
-                        <li>Current Bid: " .$result['Bid_Amount']. "$</li>
-                        <li>Closes at: " .$result['Closing_time']. "</li>"
-                        
+                        if ($result && isset($result['Item_Id'], $result['Auction_Id'], $result['Bid_Amount'], $result['Closing_time'])) {
+                            echo "<li>Item Id : " . htmlspecialchars($result['Item_Id']) . "</li>
+                            <li>Auction Id : " . htmlspecialchars($result['Auction_Id']) . "</li>
+                            <li>Current Bid: " . htmlspecialchars($result['Bid_Amount']) . "$</li>
+                            <li>Closes at: " . htmlspecialchars($result['Closing_time']) . "</li>";
+                            $current_bid = $result['Bid_Amount'];
+                        } else {
+                            echo "<li>Item Id : 5</li>
+                            <li>Auction Id : N/A</li>
+                            <li>Current Bid: No bids yet</li>
+                            <li>Closes at: N/A</li>";
+                            $current_bid = 0;
+                        }
                         ?>
                         <form action= "php/bid1.php" method = "post" onsubmit="return CheckBid()">
                             <label for ="placebid">Enter Your Bid : </label>
                             <input  type = "number" id ="placebid" name="new_bid" step = "0.01">
                             <script>
-                    function CheckBid()
-                    {
-                        var current_bid = <?php echo $result['Bid_Amount']; ?>;
-                        var new_bid = document.getElementById ("placebid").value;
+function CheckBid()
+{
+    var current_bid = <?php echo json_encode($current_bid); ?>;
+    var new_bid = document.getElementById ("placebid").value;
 
-                        if (current_bid >= new_bid) 
-                        {
-                            alert("Enter a higher bid");
-                            return false;
-                        }
-                        return true;
-                    }
-                    </script>
-                        <button type ="submit" class = "wishlistbtn">Place Bid</button>
+    if (parseFloat(new_bid) <= parseFloat(current_bid)) 
+    {
+        alert("Enter a higher bid");
+        return false;
+    }
+    return true;
+}
+</script>
+                            <button type ="submit" class = "wishlistbtn">Place Bid</button>
                         </form>
                     </ul>
                     <form action="#" method="post">
